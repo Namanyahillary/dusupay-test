@@ -12,7 +12,7 @@
         "amount"=> 3000,
         "account_number"=>  '256704543171',
         "account_name"=> "Hillary.N",
-        "merchant_reference"=> $reference,
+        "merchant_reference"=> '128323232',
         "timestamp"=> time(),
     ];
 
