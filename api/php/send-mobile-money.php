@@ -2,8 +2,8 @@
     require 'dusupay.php';
 
     $dusupay = new Dusupay([
-        'MerchantId'=>1383,
-        'Key'=>'QN5S8I5OOOJ2OHJ335JANHHDOASNC6A9SE773B1Q6JST7H39MLJF96R4GQQS267TKD7MO7J1QH1453CQO2C47A7N64L8AS8TCEM6LB7HR7K393T44C7BLE4RHP5QOCQ6QICHSI5QOOT4RS72',
+        'MerchantId'=>'',
+        'Key'=>'',
     ]);
 
     // Create request data
