@@ -10,7 +10,14 @@
 
         # Api Endpoints
         public $api = [
-            'sendMobileMoney'=> 'payout/mobile/sendFromSubAccount.json',
+            'sendMobileMoney'=> 'payout/v2/mobile/sendFromSubAccount.json',
+            'sendBankMoney'=> 'payout/v2/bank/sendFromSubAccount.json',
+            'merchantBalance'=> 'accounts/v2/merchant/balance.json',
+            'subAccountBalance'=> 'accounts/v2/merchant/balanceSubAccount.json',
+            'getMobileTransaction'=> 'payout/v2/mobile/getTransaction.json',
+            'getBankTransaction'=> 'payout/v2/bank/getTransaction.json',
+            'requestMobilePayment'=> 'collections/v2/mobile/requestPayment.json',
+            'completePaymentByNetworkId'=> 'collections/v2/mobile/completePaymentByNetworkId.json',
         ];
 
         function __construct($config=[])
@@ -41,7 +48,8 @@
             # Set Endpoint
             $url = 'https://dusupay.com/merchant-api/' . $this->api[$action];
             if(!$this->live){
-                $url = 'http://sandbox.dusupay.com/merchant-api/' . $this->api[$action];
+                // $url = 'http://sandbox.dusupay.com/merchant-api/' . $this->api[$action];
+                $url = 'http://localhost/dusupays/merchant-api/' . $this->api[$action];
             }
 
             $ch = curl_init($url);                                                                      
