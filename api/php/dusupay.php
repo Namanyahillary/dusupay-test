@@ -48,8 +48,7 @@
             # Set Endpoint
             $url = 'https://dusupay.com/merchant-api/' . $this->api[$action];
             if(!$this->live){
-                // $url = 'http://sandbox.dusupay.com/merchant-api/' . $this->api[$action];
-                $url = 'http://localhost/dusupays/merchant-api/' . $this->api[$action];
+                $url = 'http://sandbox.dusupay.com/merchant-api/' . $this->api[$action];
             }
 
             $ch = curl_init($url);                                                                      
