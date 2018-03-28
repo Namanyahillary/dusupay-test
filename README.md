@@ -19,7 +19,8 @@ If the `Response` field; **`must_use_pay_bill_instructions`** is set to `false`,
 
 
 ## Test Paybill transaction
-- To test the `completePaymentByNetworkId`, you must set `simulatePayBill` to true when calling the `requestMobilePayment` API.
+- To test, you must set `simulatePayBill` to true when calling the `requestMobilePayment` API.
+- Then call the `completePaymentByNetworkId` api to claim the transaction and have it assigned to your merchant account.
 
 This will create a pending transaction on dusupay which will complete when you call the `completePaymentByNetworkId` api
 
