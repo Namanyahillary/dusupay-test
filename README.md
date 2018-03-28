@@ -1,11 +1,7 @@
 # Dusupay API Version 2
-Note that these files are used for api version 2. 
+Note that these files are using api version 2 and you are recommended to use the same.
 
-You are recommended to use the same.
-
-They show you the request parameters and responses expected 
-
-such that you can try to get an idea on how to consume the api correclty
+They show you the request parameters and responses expected such that you can try to get an idea on how to consume the api correclty
 
 
 ## requestMobilePayment
