@@ -25,12 +25,12 @@ If the `Response` field; **`must_use_pay_bill_instructions`** is set to `false`,
 This will create a pending transaction on dusupay which will complete when you call the `completePaymentByNetworkId` api
 
 ### Note:
-0. When you call the requestMobilePayment api, 
-1. Set simulatePayBill to create a pending transaction that can be completed by paybill
-2. When the customer follows the paybill instructions and make the payment, 
-3. They will received a transaction id from their mobile money telecom network
-4. You will then call the completePaymentByNetworkId API to complete the payment using that network transaction id
-5. For the sandbox, Pass any value to the network transaction id.
+- When you call the `requestMobilePayment` api and the customer follows the paybill instructions to complete the payment, 
+- They will receive a transaction id from their mobile money telecom network
+- You will then call the `completePaymentByNetworkId` API to complete the payment using that `network transaction id`
+- For the sandbox, Pass any value to the network transaction id for test purposes.
+- Remember that when making tests, set `simulatePayBill` to true when calling the `requestMobilePayment` API such that you 
+are able to make a test `paybill` payment
 
 
 
