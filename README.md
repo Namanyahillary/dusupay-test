@@ -51,12 +51,16 @@ set request parameter **`account_type`** to **`BANK`** to get bank sub-account-b
 #### Mobile Money Sub Accounts
 - These are only used for withdrawing funds to a mobile money number or wallet.
 
-If you want to send money to mobile money wallet in Uganda, create a UGX mobile money sub-account. XAF for Camerron, GHS for Ghana, e.tc
+If you want to send money to mobile money wallet in Uganda, create a UGX mobile money sub-account. 
+
+XAF for Camerron, GHS for Ghana, e.tc
 
 #### Bank Money Sub Accounts
 - These are only used for withdrawing funds to a Bank accounts number.
 
-If you want to send money to a Bank in Nigeria, create a NGN bank money sub-account. KES for Kenya, UGX for Uganda, e.tc
+If you want to send money to a Bank in Nigeria, create a NGN bank money sub-account. 
+
+KES for Kenya, UGX for Uganda, e.tc
 
 #### Crediting/Re-charging Sub Accounts
 - Sub Accounts can only be credited from your main merchant account that they belong to.
