@@ -4,6 +4,7 @@
         'MerchantId'=>'',
         'Key'=>'',
     ]);
+    $dusupay->live = false; // set false for sandbox.dusupay.com or true fro dusupay.com live
 
     // Create request data
     $requestData = [

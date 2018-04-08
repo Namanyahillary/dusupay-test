@@ -5,12 +5,13 @@
         'MerchantId'=>'',
         'Key'=>'',
     ]);
+    $dusupay->live = false; // set false for sandbox.dusupay.com or true fro dusupay.com live
 
     // Create request data
     $requestData = [
         "merchant_id"=> $dusupay->config['MerchantId'],
         "timestamp"=> time(),
-        "account_type"=> "MOBILE", // Change this to "BANK" to get for bank sub accounts
+        "account_type"=> "BANK", // Change this to "BANK" to get for bank sub accounts
         // "account_id"=> 33, // Set the sub account it do get balance of only that sub account
     ];
 

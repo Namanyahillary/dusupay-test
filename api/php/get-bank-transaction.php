@@ -5,10 +5,11 @@
         'MerchantId'=>'',
         'Key'=>'',
     ]);
+    $dusupay->live = false; // set false for sandbox.dusupay.com or true fro dusupay.com live
 
     // Create request data
     $requestData = [
-        "id"=> 43, // Id of the transaction returned when pay out was made
+        "id"=> 1128, // Id of the transaction returned when pay out was made
         "merchant_id"=> $dusupay->config['MerchantId'],
         "timestamp"=> time(),
     ];
