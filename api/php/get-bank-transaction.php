@@ -9,7 +9,7 @@
 
     // Create request data
     $requestData = [
-        "id"=> 1128, // Id of the transaction returned when pay out was made
+        "id"=> 43, // Id of the transaction returned when pay out was made
         "merchant_id"=> $dusupay->config['MerchantId'],
         "timestamp"=> time(),
     ];
@@ -21,7 +21,7 @@
     // Make api Request
     echo $dusupay->sendRequest($requestData, 'getBankTransaction');
 
-    /*    
+    /*
     {
         "response": {
             "id": 43,

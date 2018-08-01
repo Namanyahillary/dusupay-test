@@ -4,6 +4,8 @@
         # Set false for sandbox and true for live
         public $live = false;
 
+        public $ipnResponseMsg = null;
+
         # Merchant Details
         public $config = [];
 
@@ -30,6 +32,45 @@
                  exit("Please set your merchant details");
             }
 
+            $this->ipnResponseMsg = '{"received":true,"message":"IPN Recevied"}';
+        }
+
+        function getCollectionsSignature($data){
+          $stringData = $data['amount']
+                        . $data['currency']
+                        . $data['item_id']
+                        . $data['transaction_reference']
+                        . $data['timestamp'];
+
+          return hash_hmac('sha1', $stringData, $this->config['Key']); //Set hashing algorithm to SHA1
+        }
+
+        function ipnCollectionCompleted($data){
+          if(empty($data)){
+            $this->ipnResponse("IPN Data is empty");
+            return false;
+          }
+
+          // Verify signature
+          $signature = $this->getCollectionsSignature([
+            'timestamp'             =>$data['dusupay_timestamp'],
+            'amount'                =>$data['dusupay_amount'],
+            'currency'              =>$data['dusupay_currency'],
+            'item_id'               =>$data['dusupay_itemId'],
+            'transaction_reference' =>$data['dusupay_transactionReference'],
+          ]);
+
+          if($signature != $data['hash']){
+            $this->ipnResponse("Invalid signature");
+            return false;
+          }
+
+          // Ensure the status is COMPLETE
+          if($data['dusupay_transactionStatus']=='COMPLETE'){
+            return true;
+          }
+
+          return false;
         }
 
         function getSignature($requestData, $merchantMackey){
@@ -42,6 +83,12 @@
             return hash_hmac('sha1', $stringData, $merchantMackey);
         }
 
+        function ipnResponse($message="IPN Recevied"){
+          $this->ipnResponseMsg = json_encode([
+            'received'=>true,
+            'message'=>$message
+          ]);
+        }
 
         function sendRequest($data,$action){
 
@@ -52,12 +99,12 @@
                 $url = 'http://localhost/dusupays/merchant-api/' . $this->api[$action];
             }
 
-            $ch = curl_init($url);                                                                      
+            $ch = curl_init($url);
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-            curl_setopt($ch,CURLOPT_POST, count($data));                            
+            curl_setopt($ch,CURLOPT_POST, count($data));
             curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);   
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);                                                                   
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
             curl_setopt($ch, CURLOPT_TIMEOUT, 300);
             return $result = (curl_exec($ch));
         }
