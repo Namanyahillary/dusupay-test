@@ -29,7 +29,7 @@
     echo $dusupay->sendRequest($requestData, 'requestMobilePayment');
 
     /*
-    
+
     {
         "response": {
             "id": "1180320085705256704543171",
@@ -63,7 +63,7 @@
     /**
      * Note:
      * 1. Set simulatePayBill to create a pending transaction that can be completed by paybill
-     * 2. When the customer follows the paybill instructions and make the payment, 
+     * 2. When the customer follows the paybill instructions and make the payment,
      * 3. They will received a transaction id from their mobile money telecom network
      * 4. You will then call the completePaymentByNetworkId API to complete the payment using that network transaction id
      * 5. For the sandbox, Pass any value to the network transaction id.
